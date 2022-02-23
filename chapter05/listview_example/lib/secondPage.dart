@@ -77,34 +77,61 @@ class _SecondPageState extends State<SecondPage> {
                 ],
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
               ),
-              Row(
-                children: <Widget>[
-                  GestureDetector(
-                    child: Image.asset('images/bee.png', width: 80),
-                    onTap: () {
-                      _imagePath = 'images/bee.png';
-                    },
-                  ),
-                  GestureDetector(
-                    child: Image.asset('images/cat.png', width: 80),
-                    onTap: () {
-                      _imagePath = 'images/cat.png';
-                    },
-                  ),
-                  GestureDetector(
-                    child: Image.asset('images/cow.png', width: 80),
-                    onTap: () {
-                      _imagePath = 'images/cow.png';
-                    },
-                  ),
-                  GestureDetector(
-                    child: Image.asset('images/dog.png', width: 80),
-                    onTap: () {
-                      _imagePath = 'images/dog.png';
-                    },
-                  ),
-                ],
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Container(
+                height: 100,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    GestureDetector(
+                      child: Image.asset('images/bee.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/bee.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/cat.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/cat.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/cow.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/cow.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/dog.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/dog.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/fox.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/fox.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/monkey.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/monkey.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/pig.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/pig.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/wolf.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/wolf.png';
+                      },
+                    ),
+                  ],
+                ),
               ),
               ElevatedButton(onPressed: () {}, child: const Text('동물 추가하기'))
             ],
