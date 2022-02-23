@@ -75,3 +75,7 @@
    
 9. Null safety를 지원한다.
    >   Null safety는 변수를 사용할 때 사용하는 것으로 자료형 다음에 ?를 붙이면 Null이 가능하고 붙이지 않으면 Null이 불가능하다. 식 다음에 !를 붙이면 Null이 아님을 직접 표시한다.   
+
+**다트 언어의 문법**
+
+&nbsp;&nbsp;&nbsp;정리본 &nbsp;👉🏻&nbsp; [🔖](https://front-end.tistory.com/57)
