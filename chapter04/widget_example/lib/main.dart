@@ -29,6 +29,15 @@ class _MaterialFlutterApp extends State<MaterialFlutterApp> {
       ),
       floatingActionButton:
           FloatingActionButton(child: const Icon(Icons.add), onPressed: () {}),
+      body: Container(
+        child: Center(
+          // 가로 중앙 정렬
+          child: Column(
+            children: const <Widget>[Icon(Icons.apple), Text('iOS')],
+            mainAxisAlignment: MainAxisAlignment.center, // 세로 중앙 정렬
+          ),
+        ),
+      ),
     );
   }
 }
