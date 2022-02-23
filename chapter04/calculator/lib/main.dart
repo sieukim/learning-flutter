@@ -24,7 +24,7 @@ class _WidgetAppState extends State<WidgetApp> {
   var sum = '';
 
   // TextField Controller
-  // TextField 내 값을 controlloer.value.text를 통해 가져올 옴
+  // TextField 내 값을 controller.value.text를 통해 가져올 옴
   var value1 = TextEditingController();
   var value2 = TextEditingController();
 
@@ -34,8 +34,37 @@ class _WidgetAppState extends State<WidgetApp> {
     setState(() {
       var a = int.parse(value1.value.text);
       var b = int.parse(value2.value.text);
-      sum = '${a + b}';
+
+      if (_buttonText == '더하기') sum = '${a + b}';
+      if (_buttonText == '빼기') sum = '${a - b}';
+      if (_buttonText == '곱하기') sum = '${a * b}';
+      if (_buttonText == '나누기') sum = '${a / b}';
     });
+  }
+
+  // DropdownButton 내 버튼 리스트
+  final _buttonList = ['더하기', '빼기', '곱하기', '나누기'];
+
+  // DropdownButton 내 표시할 아이템 목록
+  final _dropDownMenuItems = <DropdownMenuItem<String>>[];
+
+  String? _buttonText = '';
+
+  // DropdownButton onChanged 핸들러
+  onChanged(dynamic value) {
+    setState(() {
+      _buttonText = value;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    for (var item in _buttonList) {
+      _dropDownMenuItems.add(DropdownMenuItem(child: Text(item), value: item));
+    }
+    // 초기값지정
+    _buttonText = _dropDownMenuItems[0].value!;
   }
 
   @override
@@ -75,11 +104,15 @@ class _WidgetAppState extends State<WidgetApp> {
                 child: ElevatedButton(
                     onPressed: onPressed,
                     child: Row(
-                      children: const <Widget>[Icon(Icons.add), Text('더하기')],
+                      children: <Widget>[const Icon(Icons.add), Text(_buttonText!)],
                     ),
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.amber))),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: DropdownButton(items: _dropDownMenuItems, onChanged: onChanged, value: _buttonText),
               )
             ],
           )),
