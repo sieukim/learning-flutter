@@ -15,19 +15,34 @@ class FirstPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ListView.builder(
-          itemBuilder: (context, position) {
-            return Card(
+          itemBuilder: (BuildContext context, position) {
+            // 터치 이벤트 처리를 위한 GestureDetector
+            return GestureDetector(
+              child: Card(
                 child: Row(
-              children: <Widget>[
-                Image.asset(
-                  animalList![position].imagePath!,
-                  height: 100,
-                  width: 100,
-                  fit: BoxFit.contain,
+                  children: <Widget>[
+                    Image.asset(
+                      animalList![position].imagePath!,
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.contain,
+                    ),
+                    Text(animalList![position].animalName!)
+                  ],
                 ),
-                Text(animalList![position].animalName!)
-              ],
-            ));
+              ),
+              onTap: () {
+                AlertDialog dialog = AlertDialog(
+                  content: Text(
+                    '이 동물은 ${animalList![position].kind}',
+                    style: const TextStyle(fontSize: 30.0),
+                  ),
+                );
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => dialog);
+              },
+            );
           },
           // 아이템 개수만큼만 스크롤할 수 있도록 제한
           itemCount: animalList!.length,
