@@ -23,6 +23,12 @@ class MaterialFlutterApp extends StatefulWidget {
 class _MaterialFlutterApp extends State<MaterialFlutterApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Material Design App'),
+      ),
+      floatingActionButton:
+          FloatingActionButton(child: const Icon(Icons.add), onPressed: () {}),
+    );
   }
 }
