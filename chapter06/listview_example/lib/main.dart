@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import './animalItem.dart';
+import './cupertinoMain.dart';
 import './firstPage.dart';
 import './secondPage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CupertinoMain());
 }
 
 class MyApp extends StatelessWidget {
@@ -99,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage>
     return Scaffold(
       appBar: AppBar(title: const Text('ListView Example')),
       body: TabBarView(
-        children:  <Widget>[
+        children: <Widget>[
           FirstPage(animalList: animalList),
           SecondPage(animalList: animalList)
         ],
