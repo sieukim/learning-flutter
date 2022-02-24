@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:listview_example/cupertinoSecondPage.dart';
 
 import './animalItem.dart';
 import './cupertinoFirstPage.dart';
+import './cupertinoSecondPage.dart';
 
 class CupertinoMain extends StatefulWidget {
   const CupertinoMain({Key? key}) : super(key: key);
