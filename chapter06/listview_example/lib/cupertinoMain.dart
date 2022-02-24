@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:listview_example/cupertinoFirstPage.dart';
+import 'package:listview_example/cupertinoSecondPage.dart';
 
 import './animalItem.dart';
+import './cupertinoFirstPage.dart';
 
 class CupertinoMain extends StatefulWidget {
   const CupertinoMain({Key? key}) : super(key: key);
@@ -63,8 +64,7 @@ class _CupertinoMainState extends State<CupertinoMain> {
           if (value == 0) {
             return CupertinoFirstPage(animalList: animalList);
           } else {
-            return Container(
-                child: const Center(child: Text('cupertino Tab 2')));
+            return CupertinoSecondPage(animalList: animalList);
           }
         },
       ),

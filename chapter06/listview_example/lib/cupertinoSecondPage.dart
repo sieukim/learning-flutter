@@ -33,6 +33,17 @@ class _CupertinoSecondPageState extends State<CupertinoSecondPage> {
     ),
   };
 
+  getKind(int? value) {
+    switch (value) {
+      case 0:
+        return '양서류';
+      case 1:
+        return '파충류';
+      case 2:
+        return '포유류';
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -42,7 +53,117 @@ class _CupertinoSecondPageState extends State<CupertinoSecondPage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      child: null,
+      child: Container(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: CupertinoTextField(
+                  controller: _textEditingController,
+                  keyboardType: TextInputType.text,
+                  maxLines: 1,
+                ),
+              ),
+              CupertinoSegmentedControl(
+                padding: const EdgeInsets.only(bottom: 20, top: 20),
+                groupValue: _kindChoice,
+                children: segmentWidgets,
+                onValueChanged: (int value) {
+                  setState(
+                    () {
+                      _kindChoice = value;
+                    },
+                  );
+                },
+              ),
+              Row(
+                children: <Widget>[
+                  const Text('날개가 존재하나요?'),
+                  CupertinoSwitch(
+                    value: _flyExist,
+                    onChanged: (value) {
+                      setState(
+                        () {
+                          _flyExist = value;
+                        },
+                      );
+                    },
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+              ),
+              SizedBox(
+                height: 100,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    GestureDetector(
+                      child: Image.asset('images/bee.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/bee.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/cat.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/cat.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/cow.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/cow.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/dog.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/dog.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/fox.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/fox.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/monkey.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/monkey.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/pig.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/pig.png';
+                      },
+                    ),
+                    GestureDetector(
+                      child: Image.asset('images/wolf.png', width: 80),
+                      onTap: () {
+                        _imagePath = 'images/wolf.png';
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              CupertinoButton(
+                child: const Text('동물 추가하기'),
+                onPressed: () {
+                  widget.animalList?.add(Animal(
+                      animalName: _textEditingController?.value.text,
+                      kind: getKind(_kindChoice),
+                      imagePath: _imagePath,
+                      flyExist: _flyExist));
+                },
+              ),
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+        ),
+      ),
       navigationBar: const CupertinoNavigationBar(middle: Text('동물 추가')),
     );
   }
