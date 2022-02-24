@@ -5,17 +5,18 @@ class ThirdDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 전달받은 데이터 갖고오기
+    final String args = ModalRoute.of(context)!.settings.arguments.toString();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Third Detail Example'),
       ),
       body: Container(
         child: Center(
-          child: ElevatedButton(
-            child: const Text('첫 번째 페이지로 돌아가기'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+          child: Text(
+            args,
+            style: const TextStyle(fontSize: 30),
           ),
         ),
       ),
