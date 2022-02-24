@@ -10,15 +10,25 @@ class SecondDetail extends StatefulWidget {
 class _SecondDetailState extends State<SecondDetail> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController controller = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Second Detail Example')),
       body: Container(
         child: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacementNamed('/third');
-            },
-            child: const Text('두 번째 페이지로 돌아가기'),
+          child: Column(
+            children: <Widget>[
+              TextField(
+                controller: controller,
+                keyboardType: TextInputType.text,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(controller.value.text);
+                },
+                child: const Text('저장하기'),
+              ),
+            ],
           ),
         ),
       ),

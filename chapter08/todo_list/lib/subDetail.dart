@@ -19,6 +19,15 @@ class _SubDetailState extends State<SubDetail> {
     todoList.add('정리하기');
   }
 
+  // 두 번째 페이지로 이동하고 이때 반환하는 값을 저장해 todoList에 추가하는 함수
+  // 데이터를 받은 후 처리해야 하므로 비동기~!~!!!
+  void _addNavigation(BuildContext context) async {
+    final result = await Navigator.of(context).pushNamed('/second');
+    setState(() {
+      todoList.add(result as String);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +51,9 @@ class _SubDetailState extends State<SubDetail> {
         itemCount: todoList.length,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          _addNavigation(context);
+        },
         child: const Icon(Icons.add),
       ),
     );
