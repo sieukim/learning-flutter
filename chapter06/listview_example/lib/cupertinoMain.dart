@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:listview_example/cupertinoFirstPage.dart';
 
 import './animalItem.dart';
 
@@ -60,8 +61,7 @@ class _CupertinoMainState extends State<CupertinoMain> {
         tabBar: tabBar!,
         tabBuilder: (context, value) {
           if (value == 0) {
-            return Container(
-                child: const Center(child: Text('cupertino Tab 1')));
+            return CupertinoFirstPage(animalList: animalList);
           } else {
             return Container(
                 child: const Center(child: Text('cupertino Tab 2')));
